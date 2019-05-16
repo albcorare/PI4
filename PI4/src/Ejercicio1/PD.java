@@ -6,7 +6,10 @@ import us.lsi.pd.AlgoritmoPD.Sp;
 import us.lsi.pd.AlgoritmoPD.Tipo;
 import us.lsi.pd.ProblemaPDR;
 
-public class PD implements ProblemaPDR<Integer, Integer,PD>{
+public class PD implements ProblemaPDR<List<Integer>, Integer,PD>{
+	
+	private Integer index;
+	private List<Integer> lista;
 
 	@Override
 	public Tipo getTipo() {
@@ -15,31 +18,26 @@ public class PD implements ProblemaPDR<Integer, Integer,PD>{
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return lista.size() - index;
 	}
 
 	@Override
-	public boolean esCasoBase() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean esCasoBase() {//que pasa cuando llego al final
+		return index == lista.size();
 	}
 
 	@Override
-	public Sp<Integer> getSolucionParcialCasoBase() {
-		// TODO Auto-generated method stub
-		return null;
+	public Sp<Integer> getSolucionParcialCasoBase() {//llego al final y no encuentro solucion
+		return Sp.create(null, 0.0);
 	}
 
 	@Override
-	public PD getSubProblema(Integer a) {
-		// TODO Auto-generated method stub
+	public PD getSubProblema(Integer a) {//ramifiaciones del probelma un problema menor
 		return null;
 	}
 
 	@Override
 	public Sp<Integer> getSolucionParcialPorAlternativa(Integer a, Sp<Integer> s) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -50,16 +48,17 @@ public class PD implements ProblemaPDR<Integer, Integer,PD>{
 	}
 
 	@Override
-	public Integer getSolucionReconstruidaCasoBase(Sp<Integer> sp) {
+	public List<Integer> getSolucionReconstruidaCasoBase(Sp<Integer> sp) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Integer getSolucionReconstruidaCasoRecursivo(Sp<Integer> sp, Integer s) {
+	public List<Integer> getSolucionReconstruidaCasoRecursivo(Sp<Integer> sp, List<Integer> s) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
 
 }
