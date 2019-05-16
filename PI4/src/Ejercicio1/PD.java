@@ -1,5 +1,6 @@
 package Ejercicio1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import us.lsi.pd.AlgoritmoPD.Sp;
@@ -10,6 +11,22 @@ public class PD implements ProblemaPDR<List<Integer>, Integer,PD>{
 	
 	private Integer index;
 	private List<Integer> lista;
+	
+	public static PD create(List<Integer> numeros) {
+		return new PD(numeros);
+	}
+
+	private PD(List<Integer> lista) {
+		super();
+		this.index = 0;
+		this.lista = lista;
+	}
+	
+	public PD clone() {
+		PD newProblem = new PD(this.lista);
+		return newProblem;
+	}
+
 
 	@Override
 	public Tipo getTipo() {
@@ -33,30 +50,32 @@ public class PD implements ProblemaPDR<List<Integer>, Integer,PD>{
 
 	@Override
 	public PD getSubProblema(Integer a) {//ramifiaciones del probelma un problema menor
-		return null;
+		PD pro = this.clone();
+		pro.index = this.index + 1;
+		return pro;
+		
 	}
 
 	@Override
 	public Sp<Integer> getSolucionParcialPorAlternativa(Integer a, Sp<Integer> s) {
-		return null;
+		return Sp.create(a, s.propiedad + 1);
 	}
 
 	@Override
 	public List<Integer> getAlternativas() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Integer> alternativas = new ArrayList<Integer>();
+		
 	}
 
 	@Override
 	public List<Integer> getSolucionReconstruidaCasoBase(Sp<Integer> sp) {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<>();
 	}
 
 	@Override
 	public List<Integer> getSolucionReconstruidaCasoRecursivo(Sp<Integer> sp, List<Integer> s) {
-		// TODO Auto-generated method stub
-		return null;
+		s.add(0, sp.alternativa);
+		return s;
 	}
 
 	
