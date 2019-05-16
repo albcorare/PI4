@@ -64,6 +64,7 @@ public class PD implements ProblemaPDR<List<Integer>, Integer,PD>{
 	@Override
 	public List<Integer> getAlternativas() {
 		List<Integer> alternativas = new ArrayList<Integer>();
+		return null;
 		
 	}
 
