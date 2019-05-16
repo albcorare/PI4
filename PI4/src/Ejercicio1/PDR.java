@@ -7,23 +7,29 @@ import us.lsi.pd.AlgoritmoPD.Sp;
 import us.lsi.pd.AlgoritmoPD.Tipo;
 import us.lsi.pd.ProblemaPDR;
 
-public class PD implements ProblemaPDR<List<Integer>, Integer,PD>{
+public class PDR implements ProblemaPDR<List<Integer>, Integer,PDR>{
 	
 	private Integer index;
 	private List<Integer> lista;
+
+	public static Integer numeroBuscado(List<Integer> ls) {
+		return ls.stream()
+		.mapToInt(x-> ls.get(x))
+		.sum();
+	}
 	
-	public static PD create(List<Integer> numeros) {
-		return new PD(numeros);
+	public static PDR create(List<Integer> numeros) {
+		return new PDR(numeros);
 	}
 
-	private PD(List<Integer> lista) {
+	private PDR(List<Integer> lista) {
 		super();
 		this.index = 0;
 		this.lista = lista;
 	}
 	
-	public PD clone() {
-		PD newProblem = new PD(this.lista);
+	public PDR clone() {
+		PDR newProblem = new PDR(this.lista);
 		return newProblem;
 	}
 
@@ -49,8 +55,8 @@ public class PD implements ProblemaPDR<List<Integer>, Integer,PD>{
 	}
 
 	@Override
-	public PD getSubProblema(Integer a) {//ramifiaciones del probelma un problema menor
-		PD pro = this.clone();
+	public PDR getSubProblema(Integer a) {//ramifiaciones del probelma un problema menor
+		PDR pro = this.clone();
 		pro.index = this.index + 1;
 		return pro;
 		
@@ -63,11 +69,10 @@ public class PD implements ProblemaPDR<List<Integer>, Integer,PD>{
 
 	@Override
 	public List<Integer> getAlternativas() {
-		List<Integer> alternativas = new ArrayList<Integer>();
+//		List<Integer> alternativas = new ArrayList<Integer>();
+//		if(lista.get(this.index))
 		return null;
-		
-	}
-
+ 	}
 	@Override
 	public List<Integer> getSolucionReconstruidaCasoBase(Sp<Integer> sp) {
 		return new ArrayList<>();

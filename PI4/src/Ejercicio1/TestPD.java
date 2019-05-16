@@ -9,7 +9,7 @@ public class TestPD {
 	public static void main(String[] args) {
 		
 		AlgoritmoPD.isRandomize = false;
-		PD p = PD.create(Arrays.asList(2,0,5,4,1,0));
+		PDR p = PDR.create(Arrays.asList(2,0,5,4,1,0));
 		var a = AlgoritmoPD.createPDR(p);
 		a.ejecuta();
 		
