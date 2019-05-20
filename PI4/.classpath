@@ -6,18 +6,18 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/AlgoritmosRecursivos"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/DatosCompartidos"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/EjemplosBT"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/EjemplosDeGrafos"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/EjemplosGeneticos"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/EjemplosParteComun"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/EjemplosPD"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/EjemplosPL"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/EjemplosResueltosConVariasTecnicas"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Geneticos"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Grafos"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/LpSolve"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ParteComun"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/AlgoritmosRecursivos"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/DatosCompartidos"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/EjemplosBT"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/EjemplosDeGrafos"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/EjemplosGeneticos"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/EjemplosParteComun"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/EjemplosPD"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/EjemplosPL"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/EjemplosResueltosConVariasTecnicas"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Geneticos"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Grafos"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/LpSolve"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ParteComun"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
