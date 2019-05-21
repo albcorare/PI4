@@ -44,12 +44,6 @@ public class PDR implements ProblemaPDR<List<Integer>, Integer,PDR>{
 		this(0,lista,0,0);
 		
 	}
-	/*
-	public PDR clone() {
-		PDR newProblem = new PDR(this.lista);
-		return newProblem;
-	}*/
-
 
 	@Override
 	public Tipo getTipo() {
@@ -114,8 +108,7 @@ public class PDR implements ProblemaPDR<List<Integer>, Integer,PDR>{
 	public List<Integer> getSolucionReconstruidaCasoRecursivo(Sp<Integer> sp, List<Integer> s) {
 		if (sp.alternativa==1) {
 		    Integer e = numeros.get(index);
-
-		s.add(0, e); //TODO
+		    s.add(0, e);
 		}
 		return s;
 	}

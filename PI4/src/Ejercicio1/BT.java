@@ -1,15 +1,23 @@
-package Ejercicio2;
+package Ejercicio1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import us.lsi.bt.EstadoBT;
 
 public class BT implements EstadoBT<List<Integer>, Integer, BT> {
+	
+	public static List<Integer> numeros;
+
+	private Integer index;
+	private List<Integer> lista;
+	private Integer sum0;
+	private Integer sum1;
+	
 
 	@Override
 	public Tipo getTipo() {
-		// TODO Auto-generated method stub
-		return null;
+		return Tipo.Min;
 	}
 
 	@Override
@@ -32,20 +40,20 @@ public class BT implements EstadoBT<List<Integer>, Integer, BT> {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return numeros.size() - index;
 	}
 
 	@Override
 	public boolean esCasoBase() {
-		// TODO Auto-generated method stub
-		return false;
+		return index == numeros.size();
 	}
 
 	@Override
 	public List<Integer> getAlternativas() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Integer> alternativas = new ArrayList<Integer>();
+		alternativas.add(0);
+		alternativas.add(1);
+		return alternativas;
 	}
 
 	@Override
