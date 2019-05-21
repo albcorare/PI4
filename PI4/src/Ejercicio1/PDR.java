@@ -3,16 +3,19 @@ package Ejercicio1;
 import java.util.ArrayList;
 import java.util.List;
 
+import us.lsi.common.Lists2;
 import us.lsi.pd.AlgoritmoPD.Sp;
 import us.lsi.pd.AlgoritmoPD.Tipo;
 import us.lsi.pd.ProblemaPDR;
 
 public class PDR implements ProblemaPDR<List<Integer>, Integer,PDR>{
 	
+	public static List<Integer> numeros;
+
 	private Integer index;
 	private List<Integer> lista;
-	private List<Integer> sum0;
-	private List<Integer> sum1;
+	private Integer sum0;
+	private Integer sum1;
 
 	public static Integer numeroBuscado(List<Integer> ls) {
 		return ls.stream()
@@ -21,19 +24,31 @@ public class PDR implements ProblemaPDR<List<Integer>, Integer,PDR>{
 	}
 	
 	public static PDR create(List<Integer> numeros) {
-		return new PDR(numeros);
+		PDR.numeros = numeros;
+		return new PDR(new ArrayList<>());
+	}
+
+	public static PDR create(Integer index, List<Integer> lista, Integer sum0, Integer sum1) {
+		return new PDR( index, lista,  sum0,  sum1);
+	}
+	
+	private PDR(Integer index, List<Integer> lista, Integer sum0, Integer sum1) {
+		super();
+		this.index = index;
+		this.lista = lista;
+		this.sum0 = sum0;
+		this.sum1 = sum1;
 	}
 
 	private PDR(List<Integer> lista) {
-		super();
-		this.index = 0;
-		this.lista = lista;
+		this(0,lista,0,0);
+		
 	}
-	
+	/*
 	public PDR clone() {
 		PDR newProblem = new PDR(this.lista);
 		return newProblem;
-	}
+	}*/
 
 
 	@Override
@@ -43,27 +58,44 @@ public class PDR implements ProblemaPDR<List<Integer>, Integer,PDR>{
 
 	@Override
 	public int size() {
-		return lista.size() - index;
+		return numeros.size() - index;
 	}
 
 	@Override
 	public boolean esCasoBase() {//que pasa cuando llego al final
-		return index == lista.size();
+		return index == numeros.size();
 	}
 
 	@Override
 	public Sp<Integer> getSolucionParcialCasoBase() {//llego al final y no encuentro solucion
-		return Sp.create(null, 0.0);
+		if (sum1==sum0) {
+			return Sp.create(null, 0.0);
+		}
+		return null;
 	}
 
 	@Override
 	public PDR getSubProblema(Integer a) {//ramifiaciones del probelma un problema menor	
-		return null; //TODO
+		 List<Integer> nlista = Lists2.newList(lista);
+		 Integer nsum0 = sum0;
+	    Integer nsum1=sum1;
+	    Integer e = numeros.get(index);
+		if (a==1) {
+			nlista.add(e);
+			nsum0 = nsum0 + e;
+		} else {
+			nsum1 = nsum1 + e;
+		}
+		return PDR.create(index+1,nlista,nsum0,nsum1); //TODO
 	}
 
 	@Override
 	public Sp<Integer> getSolucionParcialPorAlternativa(Integer a, Sp<Integer> s) {
+		if (a==1) {
 		return Sp.create(a, s.propiedad + 1);//TODO
+		}
+		return Sp.create(a, s.propiedad);//TODO
+
 	}
 
 	@Override
@@ -80,7 +112,11 @@ public class PDR implements ProblemaPDR<List<Integer>, Integer,PDR>{
 
 	@Override
 	public List<Integer> getSolucionReconstruidaCasoRecursivo(Sp<Integer> sp, List<Integer> s) {
-		s.add(0, sp.alternativa); //TODO
+		if (sp.alternativa==1) {
+		    Integer e = numeros.get(index);
+
+		s.add(0, e); //TODO
+		}
 		return s;
 	}
 	
