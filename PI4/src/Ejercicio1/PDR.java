@@ -17,11 +17,6 @@ public class PDR implements ProblemaPDR<List<Integer>, Integer,PDR>{
 	private Integer sum0;
 	private Integer sum1;
 
-	public static Integer numeroBuscado(List<Integer> ls) {
-		return ls.stream()
-		.mapToInt(x-> ls.get(x))
-		.sum();
-	}
 	
 	public static PDR create(List<Integer> numeros) {
 		PDR.numeros = numeros;
