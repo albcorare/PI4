@@ -57,8 +57,6 @@ public class BT implements EstadoBT<List<Integer>, Integer, BT> {
 	@Override
 	public BT retrocede(Integer a) {
 		index = index-1;
-
-
 		Integer e = numeros.get(index);
 		if (a == 1) {
 			lista.remove(lista.size()-1);
@@ -85,13 +83,11 @@ public class BT implements EstadoBT<List<Integer>, Integer, BT> {
 		List<Integer> alternativas = new ArrayList<Integer>();
 		alternativas.add(0);
 		alternativas.add(1);
-		//System.out.println(alternativas);
 		return alternativas;
 	}
 
 	@Override
 	public List<Integer> getSolucion() {
-		//System.out.println("getSol= " + lista);
 		if (sum0==sum1) {
 			return Lists2.newList(this.lista);
 		}
