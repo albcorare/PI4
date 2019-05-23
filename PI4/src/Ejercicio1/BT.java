@@ -4,52 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.lsi.bt.EstadoBT;
+import us.lsi.common.Lists2;
 
 public class BT implements EstadoBT<List<Integer>, Integer, BT> {
 
-	public static List<Integer> listaNumeros;
-
-	private List<Integer> lista;
+	public static List<Integer> numeros;
 	private Integer index;
-	private Double ls0;
-	private Double ls1;
-	private List<Integer> sls0;
-	private List<Integer> sls1;
-	private List<List<Integer>> s = new ArrayList<>();
+	private List<Integer> lista;
+	private Integer sum0;
+	private Integer sum1;
 
-	//---------------------------------------
-	public BT(Integer index, Double ls0, Double ls1, List<Integer> sls0, List<Integer> sls1, List<List<Integer>> s) {
+	// ---------------------------------------
+	public BT(List<Integer> numeros, Integer index, List<Integer> lista, Integer sum0, Integer sum1) {
 		super();
+		BT.numeros = numeros;
 		this.index = index;
-		this.ls0 = ls0;
-		this.ls1 = ls1;
-		this.sls0 = sls0;
-		this.sls1 = sls1;
-		this.s = s;
+		this.lista = lista;
+		this.sum0 = sum0;
+		this.sum1 = sum1;
 	}
 
-	private BT() {
-		lista = List.of(1, 6, 3, 2);
-		index = 0;
-		ls0 = 0.0;
-		ls1 = 0.0;
-		sls0 = new ArrayList<Integer>();
-		sls1 = new ArrayList<Integer>();
-		s = new ArrayList<List<Integer>>();
-
-	}
 	public static BT create() {
-		return new BT();
+		BT.numeros = List.of(1, 3, 1, 1, 2, 5, 8, 10, 6, 11);
+		return new BT(List.of(1, 3, 1, 1, 2, 5, 8, 10, 6, 11), 0, new ArrayList<Integer>(), 0, 0);
 	}
 
-	//---------------------------------------
+	// ---------------------------------------
 
 	@Override
 	public Tipo getTipo() {
 		return Tipo.Min;
 	}
-
-
 
 	@Override
 	public BT getEstadoInicial() {
@@ -58,39 +43,41 @@ public class BT implements EstadoBT<List<Integer>, Integer, BT> {
 
 	@Override
 	public BT avanza(Integer a) {
-		if (a == 0) {
-			sls0.add(lista.get(index));
-			if (!sls0.isEmpty()) {
-				ls0 = ls0 + sls0.get(sls0.size() - 1);
-			}
-
-			index = index + 1;
-		}
+		Integer e = numeros.get(index);
 		if (a == 1) {
-			sls1.add(lista.get(index));
-			if (!sls1.isEmpty()) {
-				ls1 = ls1 + sls0.get(sls1.size() - 1);
-			}
-
-			index++;
+			lista.add(e);
+			sum0 = sum0 + e;
+		} else {
+			sum1 = sum1 + e;
 		}
+		index = index+1;
 		return this;
 	}
 
 	@Override
 	public BT retrocede(Integer a) {
-		// TODO Auto-generated method stub
-		return null;
+		index = index-1;
+
+
+		Integer e = numeros.get(index);
+		if (a == 1) {
+			lista.remove(lista.size()-1);
+			sum0 = sum0 - e;
+		} else {
+			sum1 = sum1 - e;
+		}
+		return this;
 	}
 
 	@Override
 	public int size() {
-		return lista.size() - index;
+		return numeros.size() - index;
 	}
 
 	@Override
 	public boolean esCasoBase() {
-		return lista.size() == index;
+
+		return numeros.size() == index;
 	}
 
 	@Override
@@ -98,13 +85,24 @@ public class BT implements EstadoBT<List<Integer>, Integer, BT> {
 		List<Integer> alternativas = new ArrayList<Integer>();
 		alternativas.add(0);
 		alternativas.add(1);
+		//System.out.println(alternativas);
 		return alternativas;
 	}
 
 	@Override
 	public List<Integer> getSolucion() {
-		// TODO Auto-generated method stub
+		//System.out.println("getSol= " + lista);
+		if (sum0==sum1) {
+			return Lists2.newList(this.lista);
+		}
 		return null;
 	}
+
+	
+	public Double getObjetivo() {
+		return (double)this.lista.size();
+	}
+	
+	
 
 }

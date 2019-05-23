@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import us.lsi.pd.AlgoritmoPD;
 
-public class TestPD {
+public class TestPDR {
 	
 	public static void main(String[] args) {
 		
