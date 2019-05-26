@@ -8,6 +8,7 @@ import us.lsi.graphs.SimpleEdge;
 
 import java.util.function.BiFunction;
 
+//test
 
 
 public class TestGV {
