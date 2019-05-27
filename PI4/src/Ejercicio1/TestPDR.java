@@ -12,26 +12,25 @@ public class TestPDR {
 		
 		AlgoritmoPD.isRandomize = false;
 		PDR p = PDR.create(Arrays.asList(1,3,1,1,2,5,8,10,6,11));
-		
-
-//		
-
-
 		System.out.println(PDR.numeros);
 		var a = AlgoritmoPD.createPDR(p);
 		a.ejecuta();
 		
-//		List<Integer> kk = PDR.numeros;
-//		for(int i = 0; i<kk.size();i++) {
-//			for(int j = 0; j<a.getSolucion().size();j++) {
-//				kk.remove(a.getSolucion().get(j));
-//			}
-//		}
-//		
+		List<Integer> kk = PDR.numeros;
+		List<Integer> sol = a.getSolucion();
+		List<Integer> lista2= new ArrayList<Integer>();
+		
+		for(int i=0; i < kk.size(); i++) {
+			if(!sol.contains(kk.get(i))) {
+				lista2.add(kk.get(i));
+			}
+		}
+		
+		
 		if(a.getSolucion() == null) {
 			System.out.println("No hay solución");
 		} else {
-			System.out.println("Solución: " + a.getSolucion());
+			System.out.println("Solución: " + a.getSolucion()+"-"+ lista2);
 			System.out.println("Nº de saltos: " + a.getSolucion().size());
 		}
 	}

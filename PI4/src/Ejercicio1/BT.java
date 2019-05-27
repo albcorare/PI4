@@ -13,7 +13,7 @@ public class BT implements EstadoBT<List<Integer>, Integer, BT> {
 	private List<Integer> lista;
 	private Integer sum0;
 	private Integer sum1;
-
+ 
 	// ---------------------------------------
 	public BT(List<Integer> numeros, Integer index, List<Integer> lista, Integer sum0, Integer sum1) {
 		super();

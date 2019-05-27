@@ -21,9 +21,9 @@ public class TestGV {
 	System.out.println(estadoFinal);
 	AStarGraph<GV, SimpleEdge<GV>> grafo = VerticeSuma.create(estadoInicial,
 			estadoFinal);
-	BiFunction<GV, GV, Double> heuristica = (e1, e2) -> e1.getDistancia(e2) * 1.;
+	BiFunction<GV, GV, Double> heuristica = (e1, e2) -> e1.getDistancia(e2) * 1.;  //TODO
 	AStarAlgorithm<GV, SimpleEdge<GV>> alg = AStarAlgorithm.of(grafo, estadoInicial,
-			estadoFinal, heuristica);
+			estadoFinal, heuristica); //TODOs
 	System.out.println(alg.getPathVertexList());
 	}
 }

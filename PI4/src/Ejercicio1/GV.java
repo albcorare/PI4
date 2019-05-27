@@ -1,6 +1,7 @@
 package Ejercicio1;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,11 +16,11 @@ public class GV implements VirtualVertex<GV, SimpleEdge<GV>>{
 	private Integer sum2;
 	private Integer index;
 	
-	public GV(List<Integer> num, Integer s1, Integer s2, Integer index2) {
+	public GV(List<Integer> num, Integer s1, Integer s2, Integer index) {
 		this.numeros= num;
 		this.sum1 = s1;
 		this.sum2 = s2;
-		this.index = index2;
+		this.index = index;
 	}
 
 	public static GV create(List<Integer> num, Integer s1,Integer s2,Integer index) {
@@ -35,7 +36,7 @@ public class GV implements VirtualVertex<GV, SimpleEdge<GV>>{
 	public Set<GV> getNeighborListOf() {
 		Set<GV> n = new HashSet<>();
 		if (index < numeros.size()) {
-			n.add(create(numeros, sum1 + numeros.get(index), sum2, index + 1));
+			
 			n.add(create(numeros, sum1, sum2 + numeros.get(index), index + 1));
 		}
 		return n;
@@ -44,6 +45,13 @@ public class GV implements VirtualVertex<GV, SimpleEdge<GV>>{
 	@Override
 	public Set<SimpleEdge<GV>> edgesOf() {
 		return this.getNeighborListOf().stream().map(x->SimpleEdge.of(this, x)).collect(Collectors.toSet());
+	}
+	
+	public static List<Integer> alternativa(){
+		List<Integer> alternativas = new ArrayList<Integer>();
+		alternativas.add(0);
+		alternativas.add(1);
+		return alternativas;
 	}
 	
 	public Integer getDistancia(GV s) {
