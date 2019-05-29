@@ -53,20 +53,6 @@ public class GV implements VirtualVertex<GV, SimpleEdge<GV>>{
 		return this.getNeighborListOf().stream().map(x->SimpleEdge.of(this, x)).collect(Collectors.toSet());
 	}
 	
-//	public static List<Integer> alternativa(){
-//		List<Integer> alternativas = new ArrayList<Integer>();
-//		alternativas.add(0);
-//		alternativas.add(1);
-//		return alternativas;
-//	}
-	
-	public Integer getDistancia(GV s) {
-		int difSum1 = s.sum1 - this.sum1;
-		int difSum2 = s.sum2 - this.sum2;
-		return difSum1 + difSum2;
-
-	}
-	
 	public Double getTam() {
 		return (double) this.listSum1.size();
 	}
