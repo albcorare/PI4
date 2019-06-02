@@ -20,10 +20,10 @@ public class PD implements ProblemaPD<List<Tuple2<Punto, Punto>>, Tuple2<Integer
 	}
 
 	public PD create(List<Punto> p) {
-		return new PD( this.pO,p);
+		return new PD(this.pO,p);
 	}
 	public PD create1(List<Punto> pO) {
-		return new PD( pO,pO);
+		return new PD(pO,pO);
 	}
 	
 	

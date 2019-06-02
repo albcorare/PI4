@@ -6,20 +6,20 @@ public class Punto {
 	private Integer x;
 	private Integer y;
 	
-	public Punto(Integer indice, Integer x, Integer y) {
+	public Punto(Integer index, Integer x, Integer y) {
 		super();
-		this.index = indice;
+		this.index = index;
 		this.x = x;
 		this.y = y;
 	}
-	public Punto create(Integer indice, Integer x, Integer y) {
-		return new Punto(indice,x,y);
+	public Punto create(Integer index, Integer x, Integer y) {
+		return new Punto(index,x,y);
 	}
 	public Integer getIndice() {
 		return index;
 	}
-	public void setIndice(Integer indice) {
-		this.index = indice;
+	public void setIndice(Integer index) {
+		this.index = index;
 	}
 	public Integer getX() {
 		return x;
@@ -33,6 +33,8 @@ public class Punto {
 	public void setY(Integer y) {
 		this.y = y;
 	}
+	
+	
 	public Double getDistacia(Punto p) {
 		Integer valorx= (this.x-p.getX());
 		Integer valory= (this.y-p.getY());
